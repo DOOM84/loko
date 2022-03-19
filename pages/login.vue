@@ -1,15 +1,11 @@
 <template>
   <section class="cont pb-2 pt-2">
-<!--    <h2 class="mt-1 mb-1 center">Вход</h2>-->
 
     <div>
       <h3 class="pl-1">{{ showMode }}</h3>
       <div class="mt-1">
 
         <template v-if="mode==='login'">
-
-<!--          <input @keyup.enter="authorize" class="contact" v-model.trim="email" type="email"
-                 name="email" placeholder="Email">-->
 
           <div class="form-group pl-1 pr-1">
             <input @keyup.enter="authorize" class="form-control" v-model.trim="email" type="email"

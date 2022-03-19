@@ -32,7 +32,6 @@
 <script setup>
 import {ref, watch} from "vue";
 import {useRouter, useRoute} from "vue-router";
-//const {$scrollTo} = useNuxtApp();
 const {$logOut} = useNuxtApp();
 const navbar = ref(null);
 const sideNav = ref(null);
@@ -45,31 +44,6 @@ function logOut(){
   $logOut();
   router.replace('/');
 }
-
-//logOut
-
-/*onMounted(()=>{
-
-  document.body.classList.add('loaded');
-
-  let scrolled = false;
-  window.onscroll = function () {
-    if (window.pageYOffset > 100) {
-      navbar.value.classList.remove('top');
-      if (!scrolled) {
-        navbar.value.style.transform = 'translateY(-70px)';
-      }
-      setTimeout(function () {
-        navbar.value.style.transform = 'translateY(0)';
-        scrolled = true;
-      }, 200);
-    } else {
-      navbar.value.classList.add('top');
-      scrolled = false;
-    }
-  };
-
-})*/
 
 function openNav() {
   sideNav.value.style.left = "0px";

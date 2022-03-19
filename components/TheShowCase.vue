@@ -1,8 +1,11 @@
 <template>
   <section class="showcase" :style="{ height: vh+'vh'}">
     <div class="video-container">
-        <video src="/video/train.mov" autoplay muted loop></video>
+    <video id="background-video" autoplay loop muted>
+      <source src="https://loko.designs.network/video/train.mov" type="video/mp4">
+    </video>
     </div>
+
     <div class="content">
       <div>
         <img src="/img/logo_top.png" alt="">
@@ -18,8 +21,6 @@ const playVideo = ref(false);
   const props = defineProps({
     vh: {type: Number, default: 100},
   })
-
-
 
 </script>
 

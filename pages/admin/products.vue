@@ -80,6 +80,7 @@
       </div>
     </AdminModalWrap>
 
+    <ClientOnly>
     <AdminDtable @endFilter="toFilter = false"
                  :data="data.products"
                  :toFilter="toFilter"
@@ -124,6 +125,7 @@
         </table-body>
       </template>
     </AdminDtable>
+    </ClientOnly>
   </main>
 </template>
 <script setup>
@@ -232,7 +234,7 @@ async function storeItem() {
     } else if (e.response.status === 403) {
 
       $showToast('Доступ звапрещен', 'error');
-      //$logOut();
+
       await router.replace('/404');
 
     } else {
@@ -250,7 +252,6 @@ async function removeItem(dbId) {
 
       const formData = new FormData();
       formData.append('id', dbId);
-     // formData.append('url', url);
 
       $showToast('Обработка...', 'info', 2000);
 

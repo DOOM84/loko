@@ -18,17 +18,6 @@ function upd() {
 
 </script>
 
-<!--<script>
-
-export default {
-  props: ['content'],
-  methods: {
-    upd() {
-      this.$emit('bodyUpd', this.content);
-    }
-  }
-}
-</script>-->
 
 <style lang="scss">
 

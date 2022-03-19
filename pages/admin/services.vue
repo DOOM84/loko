@@ -72,7 +72,7 @@ async function storeItem() {
     } else if (e.response.status === 403) {
 
       $showToast('Доступ запрешен', 'error');
-      //$logOut();
+
       await router.replace('/404')
 
     } else {

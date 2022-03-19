@@ -5,14 +5,6 @@
   </main>
 </template>
 
-<!--<script setup>
-definePageMeta({
-  layout: 'error'
-})
-
-</script>-->
-
-
 <style scoped>
 
 </style>

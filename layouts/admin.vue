@@ -3,7 +3,6 @@
     <div id="modals"></div>
     <AdminTheHeader/>
     <slot/>
-<!--    <LazyTheFooter />-->
   </div>
 
 </template>

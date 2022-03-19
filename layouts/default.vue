@@ -40,21 +40,6 @@ onMounted(()=>{
     scrollToHash()
   }
 
-
-
- /* const route = useRoute();
-
-  let hash = route.hash
-
-  console.log(hash);
-
-  if(hash){
-   nextTick(() => {
-     $scrollTo(hash, 800)
-   })
- }*/
-
-
 })
 
 function scrollToHash () {
@@ -65,49 +50,6 @@ function scrollToHash () {
       $scrollTo(hash, 800)
     })
 }
-
-/*watch(route, () => {
-  console.log(route.hash);
-})*/
-
-/*onUpdated(()=>{
-  const route = useRoute();
-
-  let hash = route.hash;
-
-  console.log(hash);
-
-  if(hash){
-    nextTick(() => {
-      $scrollTo(hash, 800)
-    })
-}
-})*/
-
-
-
-
-/*import {onMounted, computed, watch} from 'vue';
-
-import {useRoute} from 'vue-router';
-
-const route = useRoute();
-
-const showBgImg = computed(() => {
-  return route.path === '/' ? 'bg-img' : '';
-});
-
-const showFooter = computed(() => {
-  return route.path !== '/';
-});
-
-watch(route, () => {
-  document.body.id = showBgImg.value;
-})
-
-onMounted(() => {
-  document.body.id = showBgImg.value;
-})*/
 
 </script>
 

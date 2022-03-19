@@ -36,10 +36,7 @@
 
 <script setup>
 
-//import {/*useRouter,*/ useRoute} from "vue-router";
-
 const route = useRoute();
-//const router = useRouter();
 
 const {data, error} = await useAsyncData('product', () => $fetch('/api/product',
     {params: {id: route.params.id}}))

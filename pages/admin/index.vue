@@ -15,8 +15,6 @@ useMeta({
   title: 'Панель управления'
 })
 
-//const {data, error} = await useAsyncData('admin', () => $fetch('/api/admin/index'));
-
 </script>
 
 <style lang="scss" scoped>

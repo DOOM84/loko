@@ -1,6 +1,18 @@
 import {useCookie} from "h3";
 import database from '~/helpers/dbConn';
+
+import { initializeApp, getApps, cert } from 'firebase-admin/app'
+import * as serviceAccount from "../../helpers/loko-821e0-firebase-adminsdk-6vge5-6de9aba71b.json";
+
+const apps = getApps();
+
+if (!apps.length) {
+    initializeApp({
+        credential: cert(serviceAccount)
+    })
+}
 database();
+
 
 export default async (req, res) => {
 

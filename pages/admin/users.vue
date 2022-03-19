@@ -49,6 +49,7 @@
       </button>
     </AdminModalWrap>
 
+    <ClientOnly>
     <AdminDtable @endFilter="toFilter = false"
                  :data="data.users"
                  :toFilter="toFilter"
@@ -104,6 +105,7 @@
         </table-body>
       </template>
     </AdminDtable>
+    </ClientOnly>
 
   </main>
 </template>
@@ -160,8 +162,6 @@ function addItem() {
 }
 
 async function storeItem() {
-
-  //const {levelName, fullGroups, ...updatedRest} = userToUpdate.value;
 
   const formData = new FormData();
   formData.append('data', JSON.stringify(userToUpdate.value))

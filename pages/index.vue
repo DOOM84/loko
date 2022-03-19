@@ -16,8 +16,6 @@ import {onMounted, ref} from 'vue';
 const cached = useCachedinfo();
 const data = ref({});
 
-//const {data, error} = await useAsyncData('index', () => $fetch('/api/index'));
-
 onMounted(async () => {
 
   const index = cached.value.findIndex((element) => element['about']);
@@ -45,7 +43,4 @@ onMounted(async () => {
 
 })
 
-/*useMeta({
-  title: t('sphere') + ' — ' + t('welcome')
-})*/
 </script>

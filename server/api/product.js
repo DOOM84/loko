@@ -1,7 +1,7 @@
 import { getFirestore} from 'firebase-admin/firestore';
 import * as url from "url";
 
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
+/*import { initializeApp, getApps, cert } from 'firebase-admin/app'
 import * as serviceAccount from "../../helpers/loko-821e0-firebase-adminsdk-6vge5-6de9aba71b.json";
 
 const apps = getApps();
@@ -10,7 +10,7 @@ if (!apps.length) {
     initializeApp({
         credential: cert(serviceAccount)
     })
-}
+}*/
 
 const db = getFirestore();
 

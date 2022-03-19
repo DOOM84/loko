@@ -22,7 +22,6 @@
       </div>
 
       <div class="form-group">
-<!--        <label for="file">Название документа (файла)</label>-->
         <input class="mr-1" ref="file" type="file" id="file" @change="onFileChange"/>
       </div>
 
@@ -41,7 +40,7 @@
       </button>
       </div>
     </AdminModalWrap>
-
+    <ClientOnly>
     <AdminDtable @endFilter="toFilter = false"
                  :data="data.files"
                  :toFilter="toFilter"
@@ -88,6 +87,7 @@
         </table-body>
       </template>
     </AdminDtable>
+    </ClientOnly>
   </main>
 </template>
 <script setup>

@@ -64,7 +64,7 @@ async function storeItem() {
     $showToast('Сохранено успешно', 'success', 2000);
 
   } catch (e) {
-    console.log(e);
+
     if (e.response.status === 422) {
 
       $showToast(e.response._data.msg, 'error');

@@ -56,6 +56,7 @@
       </div>
     </AdminModalWrap>
 
+    <ClientOnly>
     <AdminDtable @endFilter="toFilter = false"
                  :data="data.details"
                  :toFilter="toFilter"
@@ -120,6 +121,7 @@
         </table-body>
       </template>
     </AdminDtable>
+    </ClientOnly>
   </main>
 </template>
 <script setup>
@@ -262,7 +264,6 @@ async function removeItem(dbId) {
       if (e.response.status === 403) {
 
         $showToast('Доступ запрешен', 'error');
-        //$logOut();
         await router.replace('/404')
 
       }
