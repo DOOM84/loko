@@ -95,7 +95,7 @@ useMeta({
 })
 
 
-const {data, error} = await useAsyncData('adminPartners', () => $fetch('/api/admin/partners/index'));
+const {data, error} = await useAsyncData('adminPartners', () => $fetch('/api/admin/partners'));
 
 const filtering = ref([]);
 const toFilter = ref(false);
@@ -147,7 +147,7 @@ async function storeItem() {
 
     if (mode.value === 'edit') {
       const {result} = await $fetch('/api/admin/partners/edit', {
-        method: 'POST',
+        method: 'PUT',
         body: formData,
       })
       const ind = data.value.partners.findIndex(item => item.id === result.id);
@@ -199,7 +199,7 @@ async function removeItem(dbId) {
       $showToast('Обработка...', 'info', 2000);
 
       const {id} = await $fetch('/api/admin/partners/remove', {
-        method: 'POST',
+        method: 'DELETE',
         body: formData,
       })
 

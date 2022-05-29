@@ -2,7 +2,9 @@
   <div @click="closeNav" ref="overlay" id="overlay" class="bg"></div>
   <header class="white">
       <i @click="openNav" class="fas fa-bars fa-lg pointer openNav mt-1 ml-1"></i>
+    <NuxtLink to="/" class="white">
     <span class="siteName">ООО Локомотив-Сервис Ростов</span>
+    </NuxtLink>
        <span @click="logOut"  class="mr-1 pointer">Выход</span>
   </header>
   <div ref="sideNav" class="sidenav">
@@ -10,7 +12,9 @@
       <i class="fas fa-lg  fa-times pointer white"></i>
     </span>
     <div class="center mb-2">
-      <small class="white"><strong>ООО Локомотив-Сервис Ростов</strong></small>
+      <NuxtLink to="/" class="white">
+        <small class="white"><strong>ООО Локомотив-Сервис Ростов</strong></small>
+      </NuxtLink>
     </div>
 
     <div>

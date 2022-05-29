@@ -1,5 +1,9 @@
 <template>
   <section class="cont pb-2">
+    <div v-if="pending || error" class="center mt-3 mb-3 loader-color">
+      <i class=" fa-4x fas fa-circle-notch fa-spin"></i>
+    </div>
+    <div v-else>
     <h2 class="mt-1 mb-1 center">Продукция — {{data.product.title}}</h2>
     <ClientOnly>
       <TheSlides :pictures="data.product.images" />
@@ -27,7 +31,7 @@
         </tbody>
       </table>
     </TheTable>
-
+    </div>
 
   </section>
 
@@ -38,12 +42,24 @@
 
 const route = useRoute();
 
-const {data, error} = await useAsyncData('product', () => $fetch('/api/product',
-    {params: {id: route.params.id}}))
+const {data, error, pending} = await useLazyAsyncData('product', () => $fetch('/api/product',
+    {params: {id: route.params.id}}), {initialCache: false})
 
 
-useMeta({
-  title: 'ООО Локомотив-Сервис Ростов - ' +  data.value.product.title
+if (process.server && error?.value) {
+  throwError(error.value)
+}
+
+watch(error, (newError) => {
+  if(!!newError){
+    router.replace('/404')
+  }
+})
+
+const title = computed(() => 'ООО Локомотив-Сервис Ростов - ' + (data.value ? data.value.product.title : '') )
+
+useHead({
+  title: title
 })
 
 </script>

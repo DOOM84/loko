@@ -1,52 +1,55 @@
 <template>
-  <div class="pl-2 pr-2">
-    <QuillEditor @textChange="upd" v-model:content.trim="content" contentType="html" theme="snow" toolbar="full"/>
+  <div style="max-width: 1000px; margin: auto">
+    <textarea ref="editor1" id="editor1" name="editor1" :value="content" rows="5" cols="30" />
   </div>
-
 </template>
 
 <script setup>
+
+import {onMounted, ref} from 'vue';
+
 const props = defineProps({
   content: {type: String, default: ''},
-});
+})
 
-const emit = defineEmits(['bodyUpd'])
+const emit = defineEmits(['updatedContent'])
 
-function upd() {
-  emit('bodyUpd', props.content);
-}
+
+const editor1=ref(null)
+
+
+onMounted(()=>{
+
+  setTimeout(()=>{
+    CKEDITOR.replace( 'editor1', {
+      height: 500,
+      toolbar : 'full',
+      filebrowserUploadUrl: '/api/admin/uploader',
+      extraPlugins: 'youtube',
+      maxWidth: 1200,
+      removePlugins: "exportpdf",
+    });
+    setTimeout(()=>{
+
+      CKEDITOR.instances.editor1.on('change', function() {
+        const cont = CKEDITOR.instances.editor1.editable().getData();
+        emit('updatedContent', cont);
+      } );
+
+    }, 100);
+  }, 1000);
+
+
+})
+
+/*onUnmounted(()=>{
+  delete CKEDITOR.instances['editor1'];
+})*/
+
+
 
 </script>
 
+<style scoped>
 
-<style lang="scss">
-
-.ql-formats > button {
-  color: black;
-}
-
-.ql-html-popupTitle {
-  color: black;
-}
-
-.ql-html-buttonGroup {
-
-  button {
-
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 25px;
-    border: 3px #585050 solid;
-    padding: 0.2rem;
-    margin-bottom: 0.5rem;
-
-    background: none;
-    color: #000;
-
-    &:hover {
-      background: goldenrod;
-      transition: all 0.5s ease-out;
-    }
-  }
-}
 </style>

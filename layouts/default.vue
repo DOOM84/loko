@@ -8,7 +8,7 @@
     <TheHeader />
 
     <ClientOnly>
-      <TheShowCase :vh="$route.path === '/' ? 100 : 65">
+      <TheShowCase :vh="$route.path === '/' ? 100 : 35">
         <template #header v-if="$route.path === '/'">
           <NuxtLink class="btn" to="/#about">Вперед</NuxtLink>
         </template>

@@ -135,7 +135,7 @@ function filter(fTerm, dir) {
   toFilter.value = true;
 }
 
-const {data, error} = await useAsyncData('users', () => $fetch('/api/admin/users/index'));
+const {data, error} = await useAsyncData('users', () => $fetch('/api/admin/users'));
 
 const userToUpdate = ref({customClaims: {admin: false}, disabled: false});
 const showDlg = ref(false);

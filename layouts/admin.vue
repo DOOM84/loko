@@ -8,5 +8,11 @@
 </template>
 
 <script setup>
-
+useMeta({
+  title: 'Панель управления',
+  script: [{
+    defer: true,
+    src: '/scripts/ckeditor/ckeditor.js',
+  }]
+})
 </script>

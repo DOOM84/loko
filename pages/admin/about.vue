@@ -1,11 +1,10 @@
 <template>
   <main  class="center pb-2 adminHome" >
     <h1 class="mt-2 left pb-1 mb-2 pl-2 pr-2 admin-title">О предприятии</h1>
-    <ClientOnly>
-      <AdminTheEditor v-if="!finalEdit" @bodyUpd="bodyUpd"
-                      :content="infoToUpdate.text_content" contentType="html"
-                      theme="snow" toolbar="full"/>
-    </ClientOnly>
+<ClientOnly>
+  <AdminTheEditor @updatedContent="updatedContent" :content="infoToUpdate.text_content" />
+</ClientOnly>
+
 
     <div class="right mt-2 mr-2 admin-opts">
 
@@ -39,14 +38,12 @@ useMeta({
 
 const infoToUpdate = ref({});
 
-const {data, error} = await useAsyncData('adminAbout', () => $fetch('/api/admin/about/index'));
-
-const finalEdit = ref(false);
+const {data, error} = await useAsyncData('adminAbout', () => $fetch('/api/admin/about'));
 
 infoToUpdate.value = {...data.value.about}
 
-function bodyUpd(content) {
-  infoToUpdate.value.text_content = content;
+function updatedContent(cont){
+  infoToUpdate.value.text_content = cont;
 }
 
 async function storeItem() {

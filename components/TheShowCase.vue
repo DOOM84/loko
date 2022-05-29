@@ -16,8 +16,6 @@
 </template>
 
 <script setup>
-import {ref, onMounted} from "vue";
-const playVideo = ref(false);
   const props = defineProps({
     vh: {type: Number, default: 100},
   })

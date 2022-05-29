@@ -2,19 +2,7 @@
   <footer id="contacts">
     <div class="footer pt-2">
       <div>
-        <div>
-          <p>
-            ООО «Локомотив-Сервис Ростов»  <br>
-            346330, Россия. Ростовская область. г. Донецк, ул. Ленина, 37а  <br>
-            www.локомотив-сервис.рф, e-mail: <a href="mailto:locomotiv_rostov@mail.ru">  locomotiv_rostov@mail.ru</a>  <br>
-            ОГРН 1146191001263 <br>
-            ИНН/КПП 6145016260/614501001 <br>
-            Приемная.................................<a href="tel:+78636823732"> (86368) 2-37-32</a> <br>
-            Отдел продаж..........................<a href="tel:+78636823366"> (86368) 2-33-66</a> <br>
-            Отдел закупок..........................<a href="tel:+78636821301"> (86368) 2-13-01</a> <br>
-            Бухгалтерия.............................<a href="tel:+78636823732"> (86368) 2-37-32</a> <br>
-          </p>
-        </div>
+        <div class="pb-1 pl-1 pr-1" v-html="data.contacts"></div>
         <div class="pb-2">
           <img src="/img/footer_logo.png" alt="">
         </div>
@@ -31,6 +19,7 @@
 
 <script setup>
 
+const {data, pending, error} = await useAsyncData('contacts', () => $fetch('/api/contacts'));
 
 </script>
 

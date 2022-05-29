@@ -37,7 +37,7 @@
       <div v-if="mode === 'edit'" class="flexCentered"  v-for="image in productToUpdate.images">
         <div class="pos-relative">
           <img width="200" :src="image" alt="">
-          <button @click.prevent="removeImg(productToUpdate.id, image)" class="button block btn-dark ml-1 remove-button">
+          <button @click.prevent="removeImg(productToUpdate.slug, image)" class="button block btn-dark ml-1 remove-button">
             <i class="fas fa-trash"></i>
           </button>
         </div>
@@ -121,7 +121,7 @@
         </table-body>
         <table-body>
           <button @click.prevent="updateItem(row)" class="button block btn-dark"><i class="fas fa-edit"></i></button>
-          <button @click.prevent="removeItem(row.id)" class="button block btn-dark"><i class="fas fa-trash"></i></button>
+          <button @click.prevent="removeItem(row.slug)" class="button block btn-dark"><i class="fas fa-trash"></i></button>
         </table-body>
       </template>
     </AdminDtable>
@@ -147,7 +147,7 @@ useMeta({
 })
 
 
-const {data, error} = await useAsyncData('adminProducts', () => $fetch('/api/admin/products/index'));
+const {data, error} = await useAsyncData('adminProducts', () => $fetch('/api/admin/products'));
 
 const filtering = ref([]);
 const toFilter = ref(false);
@@ -204,7 +204,7 @@ async function storeItem() {
 
     if (mode.value === 'edit') {
       const {result} = await $fetch('/api/admin/products/edit', {
-        method: 'POST',
+        method: 'PUT',
         body: formData,
       })
       const ind = data.value.products.findIndex(item => item.id === result.id);
@@ -256,11 +256,11 @@ async function removeItem(dbId) {
       $showToast('Обработка...', 'info', 2000);
 
       const {id} = await $fetch('/api/admin/products/remove', {
-        method: 'POST',
+        method: 'DELETE',
         body: formData,
       })
 
-      data.value.products.splice(data.value.products.findIndex(item => item.id === id), 1);
+      data.value.products.splice(data.value.products.findIndex(item => item.slug === id), 1);
 
       filter(null, null);
 
@@ -291,7 +291,7 @@ async function removeImg(dbId, url) {
       $showToast('Обработка...', 'info', 2000);
 
       const {id} = await $fetch('/api/admin/products/removeImg', {
-        method: 'POST',
+        method: 'DELETE',
         body: formData,
       })
 

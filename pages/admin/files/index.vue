@@ -107,7 +107,7 @@ useMeta({
 })
 
 
-const {data, error} = await useAsyncData('adminFiles', () => $fetch('/api/admin/files/index'));
+const {data, error} = await useAsyncData('adminFiles', () => $fetch('/api/admin/files'));
 
 const filtering = ref([]);
 const toFilter = ref(false);
@@ -156,7 +156,7 @@ async function storeItem() {
     $showToast('Обработка...', 'info', 2000);
     if (mode.value === 'edit') {
       const {result} = await $fetch('/api/admin/files/edit', {
-        method: 'POST',
+        method: 'PUT',
         body: formData,
       })
       const ind = data.value.files.findIndex(item => item.id === result.id);
@@ -209,7 +209,7 @@ async function removeItem(dbId, url) {
       $showToast('Обработка...', 'info', 2000);
 
       const {id} = await $fetch('/api/admin/files/remove', {
-        method: 'POST',
+        method: 'DELETE',
         body: formData,
       })
 
@@ -224,7 +224,6 @@ async function removeItem(dbId, url) {
       if (e.response.status === 403) {
 
         $showToast('Доступ запрешен', 'error');
-        //$logOut();
         await router.replace('/404')
 
       }
